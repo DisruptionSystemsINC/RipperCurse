@@ -2,7 +2,6 @@ package main;
 
 import java.io.*;
 
-import static main.Main.PackZip;
 import static main.Processing.FileID;
 import static main.Processing.ProjectID;
 
@@ -29,12 +28,10 @@ public class download {
 
         printWriter.println("#!/bin/bash");
         printWriter.println("cd mods");
-        printWriter.println("wget --content-disposition " + "https://www.curseforge.com/api/v1/mods/"+ ProjectID +"/files/"+ FileID +"/download");
+        printWriter.println("wget --content-disposition " + "https://www.curseforge.com/api/v1/mods/" + ProjectID + "/files/" + FileID + "/download");
 
         printWriter.close();
 
         return tempScript;
     }
-
-    //"https://www.curseforge.com/api/v1/mods/"+ ProjectID +"/files/"+ FileID +"/download"
 }
