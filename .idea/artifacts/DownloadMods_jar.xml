@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DownloadMods:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DownloadMods_jar</output-path>
+    <root id="archive" name="DownloadMods.jar">
+      <element id="module-output" name="DownloadMods" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/CupV2.jar" path-in-jar="/FileHandling/" />
+    </root>
+  </artifact>
+</component>
