@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         String arguments = Arrays.toString(args);
         System.out.println(arguments);
+        GUIV1.main(args);
 
         if (!arguments.contains("--ModFile"))
 
