@@ -1,19 +1,22 @@
 package main;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUIV1 {
     public static void main(String[] args){
+        FileFilter filter = new FileNameExtensionFilter(".zip");
         JFrame frame = new JFrame();
         JFrame files = new JFrame();
         JPanel panel = new JPanel();
         JButton button = new JButton();
         JFileChooser FileSelector = new JFileChooser();
-        FileSelector.addChoosableFileFilter(;
-       ActionListener ButtonPress = new ActionListener() {
+        FileSelector.addChoosableFileFilter(filter);
+        ActionListener ButtonPress = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             files.add(FileSelector);
