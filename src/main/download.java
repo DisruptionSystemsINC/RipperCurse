@@ -27,6 +27,7 @@ public class download {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
+        printWriter.println("cd "+GUIV1.MinecraftGameFolderPath);
         printWriter.println("cd mods");
         printWriter.println("wget --content-disposition " + "https://www.curseforge.com/api/v1/mods/" + ProjectID + "/files/" + FileID + "/download");
 

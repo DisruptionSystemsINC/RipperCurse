@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static java.lang.System.exit;
+import static main.GUIV1.MinecraftGameFolderPath;
 import static main.GUIV1.PackZipPath;
 
 public class runShell {
@@ -28,7 +29,8 @@ public class runShell {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
-        printWriter.println("unzip " + PackZipPath);
+        printWriter.println("unzip " + PackZipPath + MinecraftGameFolderPath);
+        printWriter.println("cd "+ MinecraftGameFolderPath);
         printWriter.println("cd overrides");
         printWriter.println("cp -r * ..");
         printWriter.println("cd ..");
