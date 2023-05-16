@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static java.lang.System.exit;
-import static main.Main.PackZip;
+import static main.GUIV1.PackZipPath;
 
 public class runShell {
     public static ArrayList<String> ModListContent = new ArrayList<>();
@@ -28,7 +28,7 @@ public class runShell {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
-        printWriter.println("unzip " + PackZip);
+        printWriter.println("unzip " + PackZipPath);
         printWriter.println("cd overrides");
         printWriter.println("cp -r * ..");
         printWriter.println("cd ..");

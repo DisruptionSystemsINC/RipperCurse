@@ -9,21 +9,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.lang.System.exit;
-
 public class GUIV1 {
+    public static String PackZipPath;
     public static String PackZip;
+
     public static void main(String[] args) throws IOException {
+        String newline = "\n";
+        JTextArea Text = new JTextArea("Welcome to Disruption CurseRipper" + newline + "This script will extract the provided modpack.zip file and download the "+newline+"mods directly from Curseforge)");
         FileFilter filter = new FileNameExtensionFilter(".zip", ".zip");
         JFrame frame = new JFrame("Disruption CurseRipper");
         JFrame files = new JFrame("Choose File...");
         JPanel panel = new JPanel();
         JFileChooser FileSelector = new JFileChooser();
         FileSelector.addChoosableFileFilter(filter);
+
         //Action Listeners for buttons
         ActionListener FileSelectButtonPressed = new ActionListener() {
             @Override
@@ -32,27 +36,40 @@ public class GUIV1 {
             files.setSize(1000, 1000);
             files.setEnabled(true);
             files.setVisible(true);
-            PackZip = FileSelector.getSelectedFile().getAbsolutePath();
+            }
+        };
+        ActionListener FileSelectAction = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)){
+                    PackZip = FileSelector.getSelectedFile().getName();
+                    PackZipPath = FileSelector.getSelectedFile().getAbsolutePath();
+                    files.setVisible(false);
+                    Text.setText(PackZip + " selected." + newline +"Press Next to start the installation");
+                }
             }
         };
 
         ActionListener NextButtonPressed = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!PackZip.contains(".zip"))
+
+                if (PackZip == null)
+                {
+                    System.out.println("Please select a file first!");
+                    Text.setText("Please select a file first!");
+                    Text.setCaretColor(Color.RED);
+                }
+                else if (!PackZip.contains(".zip"))
 
                 {
-                    System.out.println("Please select a valid .zip file");
-                    exit(0);
+                    Text.setText("Please select a valid .zip file!");
                 }
 
                 else
 
                 {
-                    List<String> list = new ArrayList<>(Arrays.stream(args).toList());
-                    String FileName = list.get(1);
-                    System.out.println("Processing " + FileName + "...");
-                    PackZip = FileName;
+                    Text.setText("Processing" + PackZip + "...");
                     try {
                         runShell.executeCommands();
                     } catch (IOException | InterruptedException ex) {
@@ -62,6 +79,10 @@ public class GUIV1 {
                 }
             }
         };
+
+        //Add the action listener to the JFileChooser
+        FileSelector.addActionListener(FileSelectAction);
+
         //Define buttons
         JButton FileSelectButton = new JButton("Select File...");
         JButton NextButton = new JButton("Next");
@@ -73,8 +94,6 @@ public class GUIV1 {
         panel.add(NextButton);
 
         //Textarea on Main Panel
-        String newline = "\n";
-        JTextArea Text = new JTextArea("Welcome to Disruption CurseRipper" + newline + "This script will extract the provided modpack.zip file and download the "+newline+"mods directly from Curseforge)");
         Text.setLineWrap(true);
         Text.setSize(500, 500);
         Color Lime = new Color(0, 255, 0);
