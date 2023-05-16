@@ -27,8 +27,10 @@ public class GUIV1 {
         JFileChooser FileSelector = new JFileChooser();
         FileSelector.addChoosableFileFilter(filter);
         FileSelector.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileSelector.setFileHidingEnabled(false);
         JFileChooser MincraftGameFolderSelector = new JFileChooser();
         MincraftGameFolderSelector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        MincraftGameFolderSelector.setFileHidingEnabled(false);
 
         //Action Listeners for buttons
         ActionListener FileSelectButtonPressed = new ActionListener() {
