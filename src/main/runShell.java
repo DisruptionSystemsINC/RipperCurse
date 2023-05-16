@@ -29,8 +29,8 @@ public class runShell {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
-        printWriter.println("unzip " + PackZipPath + MinecraftGameFolderPath);
         printWriter.println("cd "+ MinecraftGameFolderPath);
+        printWriter.println("unzip " + PackZipPath);
         printWriter.println("cd overrides");
         printWriter.println("cp -r * ..");
         printWriter.println("cd ..");
