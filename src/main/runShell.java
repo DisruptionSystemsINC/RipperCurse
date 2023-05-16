@@ -55,7 +55,7 @@ public class runShell {
             Processing.Processor();
 
             } catch(FileNotFoundException e){
-                System.out.println("modlist.html not Found, Is it present?");
+                System.out.println("manifest.json not Found, Is it present?");
                 exit(404);
             } catch(IOException | InterruptedException e){
                 throw new RuntimeException(e);
