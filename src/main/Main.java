@@ -25,8 +25,8 @@ public class Main {
         else
 
             {
-            List list = new ArrayList(Arrays.stream(args).toList());
-            String FileName = (String) list.get(1);
+            List<String> list = new ArrayList<>(Arrays.stream(args).toList());
+            String FileName = list.get(1);
             System.out.println("Processing " + FileName + "...");
             PackZip = FileName;
             runShell.executeCommands();
