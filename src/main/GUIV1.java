@@ -66,7 +66,7 @@ public class GUIV1 {
                     PackZip = FileSelector.getSelectedFile().getName();
                     PackZipPath = FileSelector.getSelectedFile().getAbsolutePath();
                     files.setVisible(false);
-                    Text.setText(PackZip + " selected." + newline +"Press Next to start the installation");
+                    Text.setText(PackZip + " selected." + newline +"Press Next to start the installation" + newline + "Please wait, and do not close this Window." + newline + "If the program successfully finishes you will get a message in this Text box");
                 }
                 else {
                     files.setVisible(false);
@@ -109,7 +109,7 @@ public class GUIV1 {
                 else
 
                 {
-                    Text.setText("Processing" + PackZip + "..." + newline + "Please wait, and do not close this Window. If the program successfully finishes you will get a message in this Text box");
+                    Text.setText("Processing" + PackZip + "...");
                     NextButton.setEnabled(false);
                     FileSelectButton.setEnabled(false);
                     FolderSelectButton.setEnabled(false);
