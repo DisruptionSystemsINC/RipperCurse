@@ -109,7 +109,7 @@ public class GUIV1 {
                 else
 
                 {
-                    Text.setText("Processing" + PackZip + "...");
+                    Text.setText("All Done! Open your minecraft launcher and create a new profile, selecting the game directory as your previously selected directory");
                     NextButton.setEnabled(false);
                     FileSelectButton.setEnabled(false);
                     FolderSelectButton.setEnabled(false);
