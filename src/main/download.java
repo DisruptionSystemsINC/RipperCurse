@@ -30,7 +30,6 @@ public class download {
         printWriter.println("cd "+GUIV1.MinecraftGameFolderPath);
         printWriter.println("cd mods");
         printWriter.println("wget --content-disposition " + "https://www.curseforge.com/api/v1/mods/" + ProjectID + "/files/" + FileID + "/download");
-
         printWriter.close();
 
         return tempScript;

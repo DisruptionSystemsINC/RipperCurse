@@ -32,6 +32,14 @@ public class GUIV1 {
         MincraftGameFolderSelector.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         MincraftGameFolderSelector.setFileHidingEnabled(false);
 
+
+        //Define buttons
+
+        JButton FolderSelectButton = new JButton("Select Game folder...");
+        JButton FileSelectButton = new JButton("Select File...");
+        JButton NextButton = new JButton("Next");
+
+
         //Action Listeners for buttons
         ActionListener FileSelectButtonPressed = new ActionListener() {
             @Override
@@ -101,7 +109,10 @@ public class GUIV1 {
                 else
 
                 {
-                    Text.setText("Processing" + PackZip + "...");
+                    Text.setText("Processing" + PackZip + "..." + newline + "Please wait, and do not close this Window. If the program successfully finishes you will get a message in this Text box");
+                    NextButton.setEnabled(false);
+                    FileSelectButton.setEnabled(false);
+                    FolderSelectButton.setEnabled(false);
                     try {
                         runShell.executeCommands();
                     } catch (IOException | InterruptedException ex) {
@@ -117,11 +128,6 @@ public class GUIV1 {
         FileSelector.addActionListener(FileSelectAction);
         MincraftGameFolderSelector.addActionListener(FileSelectMinecraftFolderAction);
 
-        //Define buttons
-
-        JButton FolderSelectButton = new JButton("Select Game folder...");
-        JButton FileSelectButton = new JButton("Select File...");
-        JButton NextButton = new JButton("Next");
 
         //Add buttons to panel
 
