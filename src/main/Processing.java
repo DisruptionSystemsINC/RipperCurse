@@ -47,7 +47,7 @@ public class Processing {
             }
         }
 
-        // Print the extracted values
+        // Download the mods
         for (int i = 0; i < projectIDs.size(); i++) {
             FileID = fileIDs.get(i).toString();
             ProjectID = projectIDs.get(i).toString();
