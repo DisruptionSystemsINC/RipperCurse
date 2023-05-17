@@ -3,6 +3,7 @@ package main;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static java.lang.System.exit;
@@ -25,7 +26,7 @@ public class Main {
         else
 
             {
-            List<String> list = new ArrayList<>(Arrays.stream(args).toList());
+            List<String> list = new ArrayList<>((Collection) Arrays.stream(args));
             String FileName = list.get(1);
             System.out.println("Processing " + FileName + "...");
             PackZip = FileName;
