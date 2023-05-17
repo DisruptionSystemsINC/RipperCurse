@@ -3,7 +3,7 @@ A java script to download a modpack from Curseforge onto your linux machine
 
 
 This script is to be run with Java 11.
-Install it on ubuntu using `apt-get install openjdk-19-jre`
+Install it on ubuntu using `apt-get install openjdk-11-jre` or `apt-get install default-jre`
 
 The script uses the Modpack-zip file downloaded from Curseforge and downloads the mods using wget.
 Yes, the code is messy.
