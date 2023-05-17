@@ -47,7 +47,7 @@ public class runShell {
 
     public static void ReadFile() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(MinecraftGameFolderPath + "manifest.json"));
+            BufferedReader reader = new BufferedReader(new FileReader(MinecraftGameFolderPath + "/manifest.json"));
             String line;
             while ((line = reader.readLine()) != null) {
                 ModListContent.add(line);
