@@ -151,7 +151,6 @@ public class GUIV1 {
 
         //Set up the Frame
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setIconImage(ImageIO.read(new File("src/main/resources/Icon.png")));
         frame.add(panel);
         frame.setSize(600, 150);
         frame.setVisible(true);
