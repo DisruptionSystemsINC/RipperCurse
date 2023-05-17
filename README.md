@@ -10,7 +10,9 @@ Yes, the code is messy.
 No, i won't fix the messy code.
 
 
-To run, place this .jar and the modpack zip into your MC profile folder and run the jar using `java -jar CurseRipper.jar --ModFile [filename]`
+To run, CLI place this .jar and the modpack zip into your MC profile folder and run the jar using `java -jar RipperCurseCLI.jar --ModFile [filename]`
+
+To run GUI version, mark the jarfile as executeable using `chmod a+x RipperCurse.jar`, then simply double-click the file to run it.
 Make sure you set this folder as your game folder for the instance, else you will launch from the default gamefolder
 That's all, your machine will download the files from curseforge using wget and you are good to go
 
