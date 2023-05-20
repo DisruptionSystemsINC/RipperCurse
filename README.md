@@ -1,5 +1,6 @@
 # RipperCurse
 A java script to download a modpack from Curseforge onto your linux machine
+
 Some Packs do not work, as their manifest.JSON is different from the one this program searches for
 (For whatever reason the JSON is not standardized, screw you Curse)
 
@@ -22,3 +23,10 @@ Changelog:
 
 16.05.2023: GUI Version using swift added.
 Download it in the releases section
+
+
+
+Confirmed working Modpacks:
+
+Forever Stranded
+Manufactio
