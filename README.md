@@ -1,6 +1,7 @@
 # RipperCurse
 A java script to download a modpack from Curseforge onto your linux machine
-
+Some Packs do not work, as their manifest.JSON is different from the one this program searches for
+(For whatever reason the JSON is not standardized, screw you Curse)
 
 This script is to be run with Java 11.
 Install it on ubuntu using `apt-get install openjdk-11-jre` or `apt-get install default-jre`
