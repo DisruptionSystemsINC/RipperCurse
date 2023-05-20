@@ -29,4 +29,5 @@ Download it in the releases section
 Confirmed working Modpacks:
 
 Forever Stranded
+
 Manufactio
