@@ -1,16 +1,10 @@
 # RipperCurse
 A java script to download a modpack from Curseforge onto your linux machine
 
-Some Packs do not work, as their manifest.JSON is different from the one this program searches for
-(For whatever reason the JSON is not standardized, screw you Curse)
-
-This script is to be run with Java 11.
-Install it on ubuntu using `apt-get install openjdk-11-jre` or `apt-get install default-jre`
+This script is to be run with Java 19.
+Install it on ubuntu using `apt-get install openjdk-19-jre`
 
 The script uses the Modpack-zip file downloaded from Curseforge and downloads the mods using wget.
-Yes, the code is messy.
-No, i won't fix the messy code.
-
 
 To run, CLI place this .jar and the modpack zip into your MC profile folder and run the jar using `java -jar RipperCurseCLI.jar --ModFile [filename]`
 
