@@ -1,7 +1,9 @@
 package main;
 
+import javax.swing.plaf.metal.MetalSplitPaneUI;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,18 +11,30 @@ import java.util.regex.Pattern;
 import static main.runShell.ModListContent;
 
 public class Processing {
+    public static ArrayList<String> SplitContent = new ArrayList<>();
     public static String FileID;
     public static String ProjectID;
 
+
     public static void Processor() throws IOException, InterruptedException {
 
-
+        String newline = "\n";
         System.out.println(ModListContent);
         int startIdx = -1;
         for (int i = 0; i < ModListContent.size(); i++) {
             if (ModListContent.get(i).trim().equals("\"files\": [")) {
+                SplitContent.add(ModListContent.get(i));
                 startIdx = i + 1;
-                break;
+            }
+
+            else if (ModListContent.toString().contains("\"downloadUrl\":")){
+                SplitContent.add(ModListContent.get(i));
+                startIdx = i + 1;
+            }
+
+            else  {
+                SplitContent.add(Arrays.toString(ModListContent.get(i).split(",")));
+                startIdx = i + 1;
             }
         }
         if (startIdx == -1) {
@@ -28,10 +42,10 @@ public class Processing {
             return;
         }
 
-        // Combine the elements of the input list from the start of the "files" array to the end into a single string
-        String input = String.join("", ModListContent.subList(startIdx, ModListContent.size()));
 
-        // Regex pattern to match the "projectID" and "fileID" fields and capture the digits
+        // Combine the elements of the input list from the start of the "files" array to the end into a single string
+        String input = String.join("", SplitContent.subList(0, ModListContent.size()));
+        System.out.println(input);
         Pattern pattern = Pattern.compile("\"(?:projectID|fileID)\":\\s*(\\d+)");
 
         // Find all matches of the pattern in the input string and extract the digits
@@ -53,5 +67,6 @@ public class Processing {
             ProjectID = projectIDs.get(i).toString();
             download.DownloadMod();
         }
+        System.out.println("All done! Install forge and set the game directory to this directory, and you're ready to go!");
     }
 }
