@@ -23,11 +23,3 @@ Changelog:
 
 16.05.2023: GUI Version using swift added.
 Download it in the releases section
-
-
-
-Confirmed working Modpacks:
-
-Forever Stranded
-
-Manufactio
