@@ -11,4 +11,5 @@ No, i won't fix the messy code.
 
 
 To run, place this .jar and the modpack zip into you ./minecraft/versions/[profile name] folder and run the jar using `java -jar CurseRipper.jar --ModFile [filename]`
+Later install the correct version of forge for your pack and set your game directory accordingly
 That's all, your machine will download the files from curseforge using wget and you are good to go
