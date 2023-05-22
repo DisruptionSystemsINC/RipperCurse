@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.lang.System.exit;
 
@@ -25,7 +26,7 @@ public class Main {
         else
 
             {
-            List list = new ArrayList((Collection) Arrays.stream(args));
+            List list = new ArrayList(List.of(args));
             String FileName = (String) list.get(1);
             System.out.println("Processing " + FileName + "...");
             PackZip = FileName;

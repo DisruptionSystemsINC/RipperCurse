@@ -49,8 +49,9 @@ public class runShell {
             String line;
             while ((line = reader.readLine()) != null) {
                 ModListContent.add(line);
+                System.out.println(line);
             }
-            Processing.Processor();
+            Processinggenerated.Processor();
 
             } catch(FileNotFoundException e){
                 System.out.println("modlist.html not Found, Is it present?");

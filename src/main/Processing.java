@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,25 +12,37 @@ import static main.runShell.ModListContent;
 public class Processing {
     public static String FileID;
     public static String ProjectID;
+    public static List ModListContentSplit = new ArrayList<String>();
 
     public static void Processor() throws IOException, InterruptedException {
 
 
         System.out.println(ModListContent);
         int startIdx = -1;
+        String newline = "/n";
         for (int i = 0; i < ModListContent.size(); i++) {
             if (ModListContent.get(i).trim().equals("\"files\": [")) {
                 startIdx = i + 1;
-                break;
+                ModListContentSplit = ModListContent;
+            }
+
+            else if (!ModListContent.contains(newline)){
+                startIdx = i + 1;
+                ModListContentSplit = Arrays.stream(ModListContent.get(i).split(",")).toList();
+                System.out.println(ModListContentSplit);
+
+            }
+            else {
+
             }
         }
         if (startIdx == -1) {
-            System.out.println("Error: Could not find start of 'files' array");
+            System.out.println("Error: Could not find start of 'ModListContent' array");
             return;
         }
 
         // Combine the elements of the input list from the start of the "files" array to the end into a single string
-        String input = String.join("", ModListContent.subList(startIdx, ModListContent.size()));
+        String input = String.join("", ModListContentSplit.subList(startIdx, ModListContentSplit.size()));
 
         // Regex pattern to match the "projectID" and "fileID" fields and capture the digits
         Pattern pattern = Pattern.compile("\"(?:projectID|fileID)\":\\s*(\\d+)");
