@@ -142,8 +142,6 @@ public class GUIV1 {
         //Textarea on Main Panel
         Text.setLineWrap(true);
         Text.setSize(500, 500);
-        Color Lime = new Color(0, 255, 0);
-        Text.setCaretColor(Lime);
 
         //Add the components to the panel
         panel.add(Text);

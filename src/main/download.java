@@ -2,10 +2,10 @@ package main;
 
 import java.io.*;
 
-import static main.Processing.FileID;
-import static main.Processing.ProjectID;
+import static main.Processing.*;
 
 public class download {
+    private static Process process;
 
     public static void DownloadMod() throws IOException, InterruptedException {
         File tempScript = createTempScript();
@@ -27,9 +27,9 @@ public class download {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
-        printWriter.println("cd "+GUIV1.MinecraftGameFolderPath);
         printWriter.println("cd mods");
         printWriter.println("wget --content-disposition " + "https://www.curseforge.com/api/v1/mods/" + ProjectID + "/files/" + FileID + "/download");
+
         printWriter.close();
 
         return tempScript;

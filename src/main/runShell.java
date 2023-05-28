@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import static java.lang.System.exit;
 import static main.GUIV1.MinecraftGameFolderPath;
 import static main.GUIV1.PackZipPath;
-
 public class runShell {
     public static ArrayList<String> ModListContent = new ArrayList<>();
     public static void executeCommands() throws IOException, InterruptedException {
@@ -29,7 +28,7 @@ public class runShell {
         PrintWriter printWriter = new PrintWriter(streamWriter);
 
         printWriter.println("#!/bin/bash");
-        printWriter.println("cd "+ MinecraftGameFolderPath);
+        printWriter.println("cd " + GUIV1.MinecraftGameFolderPath);
         printWriter.println("unzip " + PackZipPath);
         printWriter.println("cd overrides");
         printWriter.println("cp -r * ..");
@@ -47,7 +46,7 @@ public class runShell {
 
     public static void ReadFile() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(MinecraftGameFolderPath + "/manifest.json"));
+            BufferedReader reader = new BufferedReader(new FileReader(MinecraftGameFolderPath+ "/manifest.json"));
             String line;
             while ((line = reader.readLine()) != null) {
                 ModListContent.add(line);
