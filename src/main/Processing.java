@@ -59,8 +59,8 @@ public class Processing {
 
         // Download the mods
         for (int i = 0; i < projectIDs.size(); i++) {
-            FileID = fileIDs.get(i).toString();
-            ProjectID = projectIDs.get(i).toString();
+            FileID = fileIDs.get(i);
+            ProjectID = projectIDs.get(i);
             download.DownloadMod();
         }
         System.out.println("All done! Install forge and set the game directory to this directory, and you're ready to go!");

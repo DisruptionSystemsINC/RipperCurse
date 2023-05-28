@@ -5,7 +5,6 @@ import java.io.*;
 import static main.Processing.*;
 
 public class download {
-    private static Process process;
 
     public static void DownloadMod() throws IOException, InterruptedException {
         File tempScript = createTempScript();
