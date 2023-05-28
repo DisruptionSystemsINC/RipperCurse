@@ -41,85 +41,70 @@ public class GUIV1 {
 
 
         //Action Listeners for buttons
-        ActionListener FileSelectButtonPressed = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            files.add(FileSelector);
-            files.setSize(1000, 1000);
-            files.setVisible(true);
+        ActionListener FileSelectButtonPressed = e -> {
+        files.add(FileSelector);
+        files.setSize(1000, 1000);
+        files.setVisible(true);
+        };
+
+        ActionListener FileMinecraftfolderSelectButtonPressed = e -> {
+            MCDirect.add(MincraftGameFolderSelector);
+            MCDirect.setSize(1000, 1000);
+            MCDirect.setVisible(true);
+        };
+
+        ActionListener FileSelectAction = e -> {
+            if(e.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)){
+                PackZip = FileSelector.getSelectedFile().getName();
+                PackZipPath = FileSelector.getSelectedFile().getAbsolutePath();
+                files.setVisible(false);
+                Text.setText(PackZip + " selected." + newline +"Press Next to start the installation" + newline + "Please wait, and do not close this Window." + newline + "If the program successfully finishes you will get a message in this Text box");
+            }
+            else {
+                files.setVisible(false);
+                Text.setText("No Modpack selected.");
             }
         };
 
-        ActionListener FileMinecraftfolderSelectButtonPressed = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MCDirect.add(MincraftGameFolderSelector);
-                MCDirect.setSize(1000, 1000);
-                MCDirect.setVisible(true);
+        ActionListener FileSelectMinecraftFolderAction = e -> {
+            if(e.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)){
+                MinecraftGameFolderPath = MincraftGameFolderSelector.getSelectedFile().getAbsolutePath();
+                MCDirect.setVisible(false);
+                Text.setText(MinecraftGameFolderPath + " selected." + newline +"select your Modpack");
+            }
+            else {
+                MCDirect.setVisible(false);
+                Text.setText("No Installation folder selected.");
             }
         };
 
-        ActionListener FileSelectAction = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)){
-                    PackZip = FileSelector.getSelectedFile().getName();
-                    PackZipPath = FileSelector.getSelectedFile().getAbsolutePath();
-                    files.setVisible(false);
-                    Text.setText(PackZip + " selected." + newline +"Press Next to start the installation" + newline + "Please wait, and do not close this Window." + newline + "If the program successfully finishes you will get a message in this Text box");
-                }
-                else {
-                    files.setVisible(false);
-                    Text.setText("No Modpack selected.");
-                }
+        ActionListener NextButtonPressed = e -> {
+
+            if (PackZip == null)
+            {
+                System.out.println("Please select a file first!");
+                Text.setText("Please select a file first!");
+                Text.setCaretColor(Color.RED);
             }
-        };
+            else if (!PackZip.contains(".zip"))
 
-        ActionListener FileSelectMinecraftFolderAction = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)){
-                    MinecraftGameFolderPath = MincraftGameFolderSelector.getSelectedFile().getAbsolutePath();
-                    MCDirect.setVisible(false);
-                    Text.setText(MinecraftGameFolderPath + " selected." + newline +"select your Modpack");
-                }
-                else {
-                    MCDirect.setVisible(false);
-                    Text.setText("No Installation folder selected.");
-                }
+            {
+                Text.setText("Please select a valid .zip file!");
             }
-        };
 
-        ActionListener NextButtonPressed = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            else
 
-                if (PackZip == null)
-                {
-                    System.out.println("Please select a file first!");
-                    Text.setText("Please select a file first!");
-                    Text.setCaretColor(Color.RED);
+            {
+                Text.setText("All Done! Open your minecraft launcher and create a new profile, selecting the game directory as your previously selected directory");
+                NextButton.setEnabled(false);
+                FileSelectButton.setEnabled(false);
+                FolderSelectButton.setEnabled(false);
+                try {
+                    runShell.executeCommands();
+                } catch (IOException | InterruptedException ex) {
+                    throw new RuntimeException(ex);
                 }
-                else if (!PackZip.contains(".zip"))
-
-                {
-                    Text.setText("Please select a valid .zip file!");
-                }
-
-                else
-
-                {
-                    Text.setText("All Done! Open your minecraft launcher and create a new profile, selecting the game directory as your previously selected directory");
-                    NextButton.setEnabled(false);
-                    FileSelectButton.setEnabled(false);
-                    FolderSelectButton.setEnabled(false);
-                    try {
-                        runShell.executeCommands();
-                    } catch (IOException | InterruptedException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    runShell.ReadFile();
-                }
+                runShell.ReadFile();
             }
         };
 
