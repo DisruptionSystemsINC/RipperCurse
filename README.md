@@ -15,5 +15,5 @@ That's all, your machine will download the files from curseforge using wget and 
 
 Changelog:
 
-16.05.2023: GUI Version using swift added.
+16.05.2023: GUI Version using swing added.
 Download it in the releases section
